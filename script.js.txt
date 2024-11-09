@@ -1,0 +1,49 @@
+const questions = [
+  {
+    question: "What is the primary goal of Miss Hana's planned team-building activities?",
+    options: ["To assess staff performance", "To improve patient outcomes", "To enhance communication and collaboration", "To reduce staffing costs"],
+    answer: 2
+  },
+  {
+    question: "Miss Hana wants to implement a new communication protocol between staff. Which method would be most effective?",
+    options: ["Top-down communication", "Hands-on training sessions", "Self-paced online modules", "Informal feedback sessions"],
+    answer: 1
+  },
+  {
+    question: "Which performance evaluation method would best support Miss Hana’s efforts in fostering teamwork?",
+    options: ["Behavioral anchored rating scale", "Peer review", "360-degree feedback", "Management by objectives"],
+    answer: 2
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function loadQuestion() {
+  document.getElementById("question-container").innerText = questions[currentQuestion].question;
+  const optionsContainer = document.getElementById("options-container");
+  optionsContainer.innerHTML = "";
+
+  questions[currentQuestion].options.forEach((option, index) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<label><input type="radio" name="option" value="${index}"> ${option}</label>`;
+    optionsContainer.appendChild(li);
+  });
+}
+
+function nextQuestion() {
+  const selectedOption = document.querySelector('input[name="option"]:checked');
+  if (selectedOption && parseInt(selectedOption.value) === questions[currentQuestion].answer) {
+    score++;
+  }
+
+  currentQuestion++;
+
+  if (currentQuestion < questions.length) {
+    loadQuestion();
+  } else {
+    document.getElementById("quiz-container").innerHTML = `<h2>Quiz Complete!</h2><p>Your score is ${score} out of ${questions.length}</p>`;
+  }
+}
+
+loadQuestion();

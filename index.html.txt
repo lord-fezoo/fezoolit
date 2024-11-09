@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fezoolet Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="quiz-container">
+  <h2>Welcome to Fezoolet Quiz</h2>
+  <div id="question-container" class="question"></div>
+  <ul id="options-container" class="options"></ul>
+  <button onclick="nextQuestion()">Next</button>
+  <div id="score"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
